@@ -1,9 +1,10 @@
 package com.izmaylov.hw6;
 
 public class Garage {
-    private static boolean status = true;
+
 
     public static void checkCar(Car car){
+        boolean status = true;
         if(!car.getEngine().getEngineType().equals(EngineType.ELECTICAL)){
             if(car.getPetrol() == 0){
                 System.out.println("Проверка бензина непройдена по причине недостаточного количества");

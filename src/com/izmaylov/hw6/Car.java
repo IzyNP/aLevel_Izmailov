@@ -7,8 +7,7 @@ public class Car {
     private int petrol;
     private int battery;
 
-    public Car() {
-    }
+
 
     public Car(Manufacturer manufacturer, Engine engine, String colour) {
         this.manufacturer = manufacturer;
@@ -70,8 +69,8 @@ public class Car {
         }
     }
 
-    private String startEngine(String name) {
-        return name + " запустил двигатель.";
+    private  void startEngine(String name) {
+        System.out.println(name + " запустил двигатель.");
     }
 
     private boolean isEnoughPetrolLevel() {
