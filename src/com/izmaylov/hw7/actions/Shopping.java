@@ -19,12 +19,14 @@ public class Shopping {
                     animal.setPresents(present.addPresent(animal));
                     animal.addHappy(20);
                     animal.addMoney(-100);
+                    System.out.println("Вы приобрели подарок за 100, теперь у питомца: " + animal.getMoney());
                     break;
                 case 150:
                     if(animal.getMoney() >= 150){
                         animal.setPresents(present.addPresent(animal));
                         animal.addHappy(25);
                         animal.addMoney(-150);
+                        System.out.println("Вы приобрели подарок за 150, теперь у питомца: " + animal.getMoney());
                         break;
                     }else {
                         System.out.println("У вас недостаточно денег для покупки подарка за 150");
@@ -35,6 +37,7 @@ public class Shopping {
                         animal.setPresents(present.addPresent(animal));
                         animal.addHappy(30);
                         animal.addMoney(-200);
+                        System.out.println("Вы приобрели подарок за 200, теперь у питомца: " + animal.getMoney());
                         break;
                     }else {
                         System.out.println("У вас недостаточно денег для покупки подарка за 200");

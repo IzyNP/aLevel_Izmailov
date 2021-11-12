@@ -17,7 +17,6 @@ public class Animal {
         this.isIll = false;
         this.type = type;
         this.age = 1;
-        this.money = 200000;
         this.satiety = 100;
         this.purity = 100;
         this.happy = 50;
@@ -38,6 +37,14 @@ public class Animal {
 
     public int getAge() {
         return age;
+    }
+
+    public double getPurity() {
+        return purity;
+    }
+
+    public double getSatiety() {
+        return satiety;
     }
 
     public int getMoney() {
@@ -82,15 +89,15 @@ public class Animal {
 
     public void addHappy(int happy) {
         if(happy < 0 && this.happy < 10 && this.satiety < 50 && isIll){
-            this.purity -= happy * 4.7;
+            this.happy -= happy * 4.7;
         }else if(happy < 0 && this.happy < 10){
-            this.purity -= happy * 1.2;
+            this.happy -= happy * 1.2;
         }else if(happy < 0 && this.satiety < 50){
-            this.purity -= happy * 1.5;
+            this.happy -= happy * 1.5;
         }else if(happy < 0 && isIll){
-            this.purity -= happy * 2;
+            this.happy -= happy * 2;
         }else {
-            this.purity -= happy;
+            this.happy -= happy;
         }
     }
 
