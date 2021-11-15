@@ -18,9 +18,6 @@ public class Working {
             animal.addHappy(-2);
             animal.addMoney(5 + (int) (Math.random() + 11));
             System.out.println(animal.getName() + " поработал" + "\n");
-            System.out.println("Сытость питомца понизилась, теперь она равна: " + animal.getSatiety());
-            System.out.println("Счастье питомца понизилось, теперь оно равна: " + animal.getHappy());
-            System.out.println("Ваш питомец получил деньги, теперь у него: " + animal.getMoney());
         } else if(animal.getHappy() < 20){
             System.out.println(animal.getName() + " слишком несчастеный и потому не может работать" + "\n");
         }else {
