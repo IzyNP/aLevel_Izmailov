@@ -20,7 +20,7 @@ public class UserInputService {
         return temp;
     }
 
-    public void userChooseSortingTypeAndEveryThirdNumberWillBeInCube(int[] array){
+    public void userChooseSortingType(int[] array){
         int choice;
         boolean isSorted = false;
         do{
@@ -43,6 +43,5 @@ public class UserInputService {
                     System.out.println("Выберите из списка.");
             }
         }while (!isSorted);
-        actions.everyThirdNumberInCube(array);
     }
 }
