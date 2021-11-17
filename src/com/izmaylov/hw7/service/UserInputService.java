@@ -39,7 +39,7 @@ public class UserInputService {
     }
 
     public void doAction(Animal animal){
-        int userAction;
+        ActionsMenu userAction;
         boolean resumeAction = true;
         final ActionsMenu[] actionsMenu = ActionsMenu.values();
         do{
@@ -48,30 +48,30 @@ public class UserInputService {
                 System.out.println(i + ") " + actionsMenu[i]);
 
             }
-            userAction = scanner.nextInt();
+            userAction = actionsMenu[scanner.nextInt()];
             switch (userAction){
-                case 0:
+                case FOOD:
                     feeding.action(animal);
                     continue;
-                case 1:
+                case GAME:
                     playing.action(animal);
                     continue;
-                case 2:
+                case SHOP:
                     shopping.action(animal, scanner );
                     continue;
-                case 3:
+                case WORK:
                     working.action(animal);
                     continue;
-                case 4:
+                case HEAL:
                     healing.action(animal);
                     continue;
-                case 5:
+                case INFO:
                     System.out.println(animal);
                     continue;
-                case 6:
+                case PRESENTS_INFO:
                     animal.showPresents();
                     continue;
-                case 7:
+                case EXIT:
                     resumeAction = false;
                     break;
             }
