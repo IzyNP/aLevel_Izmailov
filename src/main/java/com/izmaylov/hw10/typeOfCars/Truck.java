@@ -1,9 +1,8 @@
 package com.izmaylov.hw10.typeOfCars;
 
 import com.izmaylov.hw10.carModel.Car;
-import com.izmaylov.hw10.carService.Recovery;
 
-public class Truck extends Car implements Recovery {
+public class Truck extends Car{
 
     private int cargo;
     private final int consumption = super.getConsumption() * 2;

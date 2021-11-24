@@ -1,9 +1,8 @@
 package com.izmaylov.hw10.typeOfCars;
 
 import com.izmaylov.hw10.carModel.Car;
-import com.izmaylov.hw10.carService.Recovery;
 
-public class PassengerCar extends Car implements Recovery {
+public class PassengerCar extends Car{
     private int passengers;
 
     public PassengerCar(int series, int year, String color, int fuel, int passengers) {

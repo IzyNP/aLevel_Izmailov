@@ -1,6 +1,8 @@
 package com.izmaylov.hw10.carModel;
 
-public abstract class Car {
+import com.izmaylov.hw10.carService.Recovery;
+
+public abstract class Car implements Recovery {
 
     private  int fuelMaxValue;
     private final int series;
