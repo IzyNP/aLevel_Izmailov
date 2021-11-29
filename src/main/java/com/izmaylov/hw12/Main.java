@@ -2,6 +2,8 @@ package com.izmaylov.hw12;
 
 import com.izmaylov.hw12.phoneBook.PhoneBook;
 
+import java.util.Optional;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -19,7 +21,8 @@ public class Main {
         }*/
 
         PhoneBook phoneBook = new PhoneBook();
+        Optional<Integer> tmp = phoneBook.findIndexByPhoneNumber("016/161617");
         System.out.println(phoneBook.findIndexByPhoneNumber("016/161619"));
-        System.out.println(phoneBook.findIndexByPhoneNumber("016/161617"));
+        tmp.ifPresent(System.out::println);
     }
 }
