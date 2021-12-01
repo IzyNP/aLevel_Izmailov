@@ -7,16 +7,16 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
 
-        /*try {
+       /* try {
             MainWithException.main();
             ClassWithTwoMethods.f();
         } catch (Exception e) {
            System.err.println(e.getMessage());
-        }*/
+        }
 
-        /*try{
+        try{
             ClassThatThrowThreeException.throwEverything();
-        }catch (Throwable e){
+        }catch (RuntimeException | IOException | Error  e){
             System.err.println("Исключение в " + e.getClass());
         }*/
 

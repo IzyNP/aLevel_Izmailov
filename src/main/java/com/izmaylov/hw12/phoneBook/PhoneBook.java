@@ -18,7 +18,7 @@ public class PhoneBook {
         if(tmp == null){
             return Optional.empty();
         }
-        return Optional.of(tmp);
+        return Optional.ofNullable(tmp);
     }
 
     private  Integer IterInPhoneBook(String phoneNumber){

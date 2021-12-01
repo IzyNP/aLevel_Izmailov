@@ -1,4 +1,6 @@
 package com.izmaylov.hw12.exceptionClasses;
 
-public class ExceptionClass extends Exception{
+import java.io.IOException;
+
+public class ExceptionClass extends IOException {
 }
