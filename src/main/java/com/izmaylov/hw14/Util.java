@@ -1,8 +1,9 @@
 package com.izmaylov.hw14;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-class Util<E> implements Multiplier{
+class Util<E> implements Multiplier<Number>{
     E value;
 
     public void printHashCode(E e) {
@@ -20,22 +21,34 @@ class Util<E> implements Multiplier{
     @Override
     public Number[] doubleValueIn(Number[] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = array[i].intValue() * array[i].intValue();
+                array[i] = sum(array[i],array[i]);
         }
         return array;
     }
 
 
-   public<E extends Number> void sum(E one, E two) { // should work only with numbers
-        System.out.println(one.doubleValue() + two.doubleValue());
+   public Number sum(Number one, Number two) {// should work only with numbers
+       return new BigDecimal(one.toString()).multiply(new BigDecimal(two.toString()));
     }
 
 
 
-    public <E extends Number> double sumOfArray(List<E> list) {
+    /*public <N> double sumOfArray(List<N> list) {
+        Number temp;
         double s = 0.0;
-        for (E n : list) {
-            s +=  n.doubleValue();
+        for (N n : list) {
+            if(n instanceof Number) {
+                temp = (Number) n;
+                s += temp.doubleValue();
+            }
+        }
+        return s;
+    }*/
+
+    public double sumOfArray(List<? extends Number> list) {
+        double s = 0.0;
+        for (Number n : list) {
+                s += n.doubleValue();
         }
         return s;
     }
@@ -45,7 +58,6 @@ class Util<E> implements Multiplier{
             list.add(i);
         }
     }
-
 
 
 }
