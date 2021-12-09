@@ -1,6 +1,5 @@
 package com.izmaylov.hw14;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 class Util<E> implements Multiplier<Number>{
@@ -21,29 +20,16 @@ class Util<E> implements Multiplier<Number>{
     @Override
     public Number[] doubleValueIn(Number[] array) {
         for (int i = 0; i < array.length; i++) {
-                array[i] = sum(array[i],array[i]);
+                array[i] = Math.pow(array[i].doubleValue(),2);
         }
         return array;
     }
 
 
-   public Number sum(Number one, Number two) {// should work only with numbers
-       return new BigDecimal(one.toString()).multiply(new BigDecimal(two.toString()));
+   public <N extends Number> void sum(Number one, Number two) {// should work only with numbers
+       System.out.println(one.doubleValue() + two.doubleValue());
     }
 
-
-
-    /*public <N> double sumOfArray(List<N> list) {
-        Number temp;
-        double s = 0.0;
-        for (N n : list) {
-            if(n instanceof Number) {
-                temp = (Number) n;
-                s += temp.doubleValue();
-            }
-        }
-        return s;
-    }*/
 
     public double sumOfArray(List<? extends Number> list) {
         double s = 0.0;
