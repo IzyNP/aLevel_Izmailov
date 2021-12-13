@@ -45,4 +45,17 @@ class BoxComparatorTest {
 
         assertEquals(boxComparator.compare(givenBoxTwo,givenBoxOne),-1);
     }
+
+    @Test
+    void methodCompareShoulrdReturnMinusOneBecauseVolumeOfFirstBoxIsZero(){
+
+        Box givenBoxOne = Mockito.mock(Box.class);
+        Box givenBoxTwo = Mockito.mock(Box.class);
+        BoxComparator boxComparator = new BoxComparator();
+
+        Mockito.when(givenBoxOne.getVolume()).thenReturn(0);
+        Mockito.when(givenBoxTwo.getVolume()).thenReturn(4);
+
+        assertEquals(boxComparator.compare(givenBoxTwo,givenBoxOne),-1);
+    }
 }

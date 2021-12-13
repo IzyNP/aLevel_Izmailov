@@ -14,10 +14,5 @@ public class MyNode<E>{
         this.value = value;
     }
 
-    public MyNode(E value, MyNode<E> next, MyNode<E> prev) {
-        this.value = value;
-        this.next = next;
-        this.prev = prev;
-    }
 
 }

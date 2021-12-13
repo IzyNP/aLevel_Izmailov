@@ -1,59 +1,64 @@
 package com.izmaylov.hw15.practiceSlide20;
 
-import java.util.NoSuchElementException;
-
 public class MyList<E> {
-        private MyNode<E> head;
-        private MyNode<E> tail;
-        int size = 0;
+    private MyNode<E> head;
+    private MyNode<E> tail;
+    private int size = 0;
 
+    public int getSize() {
+        return size;
+    }
 
-
-        public void add(E value){
-            MyNode<E> node = new MyNode<>(value,null, null);
-            if(value == null){
-                throw new NullPointerException();
-            }else {
-                if (head == null) {
-                    head = node;
+    public void add(E value) {
+        if (value == null) {
+            throw new NullPointerException();
+        } else {
+            MyNode<E> node = new MyNode<>(value);
+            if (head == null) {
+                head = node;
+            } else {
+                MyNode<E> next = head.getNext();
+                if (next == null) {
+                    head.setNext(node);
+                    node.setPrev(head);
                 } else {
-                    MyNode<E> next = head.getNext();
-                    if (next == null) {
-                        head.setNext(node);
-                        node.setPrev(head);
-                    } else {
-                        while (next.getNext() != null) {
-                            next = next.getNext();
-                        }
-                        next.setNext(node);
-                        node.setPrev(next);
+                    while (next.getNext() != null) {
+                        next = next.getNext();
                     }
+                    next.setNext(node);
+                    node.setPrev(next);
                 }
-                tail = node;
-                size++;
             }
+            tail = node;
+            size++;
+        }
+    }
+
+
+    public E getFromLast(E value) {
+        if (tail == null) {
+            return null;
+        }
+        if (tail == head) {
+            return tail.getValue();
         }
 
-
-        public E getFromLast(E value){
-            if(tail == null){
-                throw new NoSuchElementException();
-            }
-            if(tail == head){
-                return tail.getValue();
-            }
-
-            MyNode<E> last = tail.getPrev();
-            if(last.getValue().equals(value)){
-                return last.getValue();
-            }else{
-                while (last.getValue() != null){
-                    if(last.getValue().equals(value)){
+        MyNode<E> last = tail;
+        if (last.getValue().equals(value)) {
+            return last.getValue();
+        } else {
+            if (last.getValue() == null) {
+                return null;
+            } else {
+                while (last.getValue() != null && head.getValue() != null) {
+                    if (last.getValue().equals(value)) {
                         return last.getValue();
                     }
                     last = last.getPrev();
                 }
+
             }
-            return null;
         }
+        return null;
+    }
 }

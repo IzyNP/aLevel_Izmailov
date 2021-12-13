@@ -1,6 +1,5 @@
 package com.izmaylov.hw15.practiceSlide20;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ class MyListTest {
         MyList myList = new MyList();
         String temp = null;
 
-        Assert.assertThrows(NullPointerException.class, () -> myList.add(temp));
+        Assertions.assertThrows(NullPointerException.class, () -> myList.add(temp));
     }
 
     @Test
@@ -24,7 +23,7 @@ class MyListTest {
         myList.add(temp);
 
 
-        Assert.assertEquals(expected, myList.size);
+        Assertions.assertEquals(expected, myList.getSize());
 
     }
 
@@ -32,7 +31,7 @@ class MyListTest {
     void shouldThrowExceptionBecauseLastValueIsNull(){
         MyList myList = new MyList();
 
-        Assert.assertThrows(NoSuchElementException.class,() -> myList.getFromLast(3));
+        Assertions.assertThrows(NoSuchElementException.class,() -> myList.getFromLast(3));
     }
 
     @Test
