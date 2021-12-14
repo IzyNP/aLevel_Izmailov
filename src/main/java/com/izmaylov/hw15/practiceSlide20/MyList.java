@@ -11,7 +11,7 @@ public class MyList<E> {
 
     public void add(E value) {
         if (value == null) {
-            throw new NullPointerException();
+            throw new IllegalArgumentException();
         } else {
             MyNode<E> node = new MyNode<>(value);
             if (head == null) {

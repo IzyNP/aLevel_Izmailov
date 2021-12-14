@@ -3,8 +3,6 @@ package com.izmaylov.hw15.practiceSlide20;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
-
 class MyListTest {
 
     @Test
@@ -12,7 +10,7 @@ class MyListTest {
         MyList myList = new MyList();
         String temp = null;
 
-        Assertions.assertThrows(NullPointerException.class, () -> myList.add(temp));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> myList.add(temp));
     }
 
     @Test
@@ -31,7 +29,7 @@ class MyListTest {
     void shouldThrowExceptionBecauseLastValueIsNull(){
         MyList myList = new MyList();
 
-        Assertions.assertThrows(NoSuchElementException.class,() -> myList.getFromLast(3));
+        Assertions.assertEquals(null,myList.getFromLast(3));
     }
 
     @Test
