@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Util {
@@ -21,7 +20,7 @@ public class Util {
 
     public static void summaryStatistic(List<Integer> integerList) {
         IntSummaryStatistics summaryStatistics = integerList.stream()
-                .flatMapToInt(IntStream::of)
+                .mapToInt(x -> x)
                 .filter(integer -> integer >= 0)
                 .summaryStatistics();
         System.out.println(summaryStatistics);
