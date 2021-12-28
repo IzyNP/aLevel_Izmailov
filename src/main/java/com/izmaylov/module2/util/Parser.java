@@ -42,29 +42,22 @@ public class Parser {
                     fillMap(split);
                     iter++;
                 }else {
+                    Product product;
                     if (split[values.get("type")].equals("Telephone")) {
-                        Telephone telephone = new Telephone();
-                        telephone.setType(split[values.get("type")]);
-                        telephone.setCountry(split[values.get("country")]);
-                        telephone.setDiagonal(split[values.get("diagonal")]);
-                        telephone.setModel(split[values.get("model")]);
-                        telephone.setPrice(split[values.get("price")]);
-                        telephone.setSeries(split[values.get("series")]);
-                        telephone.setScreenType(split[values.get("screen type")]);
-                        productList.add(telephone);
+                        product = new Telephone();
                     } else {
-                        Television television = new Television();
-                        television.setType(split[values.get("type")]);
-                        television.setCountry(split[values.get("country")]);
-                        television.setDiagonal(split[values.get("diagonal")]);
-                        television.setModel(split[values.get("model")]);
-                        television.setPrice(split[values.get("price")]);
-                        television.setSeries(split[values.get("series")]);
-                        television.setScreenType(split[values.get("screen type")]);
-                        productList.add(television);
+                        product = new Television();
+                    }
+                    product.setType(split[values.get("type")]);
+                    product.setCountry(split[values.get("country")]);
+                    product.setDiagonal(split[values.get("diagonal")]);
+                    product.setModel(split[values.get("model")]);
+                    product.setPrice(split[values.get("price")]);
+                    product.setSeries(split[values.get("series")]);
+                    product.setScreenType(split[values.get("screen type")]);
+                    productList.add(product);
                     }
                 }
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }

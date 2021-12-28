@@ -12,8 +12,8 @@ public class Util {
     }
 
     public static void dayTotalInfo(Map<Customer, ArrayList<Product>> ledger) {
-        System.out.println("Кол-во проданных телефонов: " + countTelephone(ledger));
-        System.out.println("Кол-во проданных телевизоров: " + countTelevision(ledger));
+        System.out.println("Кол-во проданных телефонов: " + countProductByType(ledger,"Television"));
+        System.out.println("Кол-во проданных телевизоров: " + countProductByType(ledger,"Telephone"));
         System.out.println("Минимальный заказ: " + minBill(ledger));
         System.out.println("Общая сумма заказов: " + totalOrder(ledger));
         System.out.println("Кол-во розничных заказов: " + numberOfRetailOrders(ledger));
@@ -27,47 +27,34 @@ public class Util {
         return (int) (Math.random() * max) + min;
     }
 
-    private static int countTelevision(Map<Customer, ArrayList<Product>> ledger) {
-        ArrayList<Product> products = new ArrayList<>();
-        for (Map.Entry<Customer, ArrayList<Product>> mapValue : ledger.entrySet()) {
-            products.addAll(mapValue.getValue());
-        }
-        List<Product> television = products.stream()
-                .filter(x -> x.getType().equals("Television"))
+    private static int countProductByType(Map<Customer, ArrayList<Product>> ledger, String type) {
+        List<Product> television = ledger.values().stream()
+                .flatMap(Collection::stream)
+                .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
         return television.size();
     }
 
-    private static int countTelephone(Map<Customer, ArrayList<Product>> ledger) {
-        ArrayList<Product> products = new ArrayList<>();
-        for (Map.Entry<Customer, ArrayList<Product>> mapValue : ledger.entrySet()) {
-            products.addAll(mapValue.getValue());
-        }
-        List<Product> telephone = products.stream()
-                .filter(x -> x.getType().equals("Telephone"))
-                .collect(Collectors.toList());
-        return telephone.size();
-    }
 
     private static String minBill(Map<Customer, ArrayList<Product>> ledger) {
+
         ArrayList<Customer> customers = new ArrayList<>(ledger.keySet());
 
-        List<Customer> collect = customers.stream()
+        final Customer customer = customers.stream()
                 .sorted(Customer::compareTo)
-                .limit(1)
-                .collect(Collectors.toList());
+                .findFirst().orElseThrow(IllegalStateException::new);
 
-        return ledger.get(collect.get(0)) + " " + collect.get(0);
+
+        return customer.toString() + " " + ledger.get(customer);
     }
 
-    private static String totalOrder(Map<Customer, ArrayList<Product>> ledger) {
+    private static int totalOrder(Map<Customer, ArrayList<Product>> ledger) {
         ArrayList<Customer> customers = new ArrayList<>(ledger.keySet());
-        final int[] totalOrder = {0};
 
-        customers
-                .forEach(x -> totalOrder[0] += x.getTotalOrderSum());
 
-        return Arrays.toString(totalOrder);
+        return customers.stream()
+                .mapToInt(Customer::getTotalOrderSum)
+                .sum();
     }
 
     private static int numberOfRetailOrders(Map<Customer, ArrayList<Product>> ledger){
@@ -90,7 +77,8 @@ public class Util {
         return customers.stream()
                 .filter(x -> x.getAge() < 18)
                 .peek(x -> x.setOrderType("low_age"))
-                .collect(Collectors.toList()).toString();
+                .map(Customer::toString)
+                .collect(Collectors.joining("\n"));
     }
 
     private static List<Customer> sortAllOrders(Map<Customer, ArrayList<Product>> ledger){
