@@ -10,14 +10,11 @@ import java.util.ArrayList;
 @ToString
 public class Invoice {
     private final ArrayList<Product> products = Parser.csv("ProductList.csv");
-    private Customer customer;
     private String type;
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public String getInfo(){
-        return type;
-    }
+
 }

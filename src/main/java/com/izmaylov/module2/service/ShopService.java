@@ -18,13 +18,6 @@ public class ShopService {
     private final Invoice invoice = new Invoice();
     private final ArrayList<Product> products = invoice.getProducts();
     private final Map<Customer, ArrayList<Product>> ledger = new LinkedHashMap<>();
-    private int orderCount = 0;
-
-
-    public Map<Customer, ArrayList<Product>> getLedger() {
-        return ledger;
-    }
-
 
 
     public void createOrder(Customer customer) {
@@ -43,13 +36,12 @@ public class ShopService {
         }
         customer.setTotalOrderSum(checkOrderCost(order));
         customer.setTotalOrderSize(order.size());
-        logger(customer);
+        logging(customer);
         ledger.put(customer, order);
         customer.setOrderType(invoice.getType());
-        orderCount++;
     }
 
-    private void logger(Customer customer) {
+    private void logging(Customer customer) {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("E dd.MM.yyyy 'в' hh:mm:ss");
         File log = new File("Logs.txt");

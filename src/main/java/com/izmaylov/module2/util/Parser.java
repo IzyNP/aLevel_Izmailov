@@ -16,7 +16,6 @@ public class Parser {
     private static final ArrayList<Product> productList = new ArrayList<>();
     private static final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
     private static final Map<String, Integer> values = new LinkedHashMap<>();
-    private static boolean done;
 
     private static BufferedReader createReader(String string) throws IOException {
         return new BufferedReader(new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(string))));
@@ -24,10 +23,8 @@ public class Parser {
 
     private static void fillMap(String[] strings) {
         for (int i = 0; i < strings.length; i++) {
-            String string = strings[i];
             values.put(strings[i], i);
         }
-        done = true;
     }
 
 
