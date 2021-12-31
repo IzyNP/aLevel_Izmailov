@@ -1,0 +1,11 @@
+type,series,model,diagonal,screen type,country,price
+Telephone,S-10,Samsung,none,QLED,none,200
+Television,RTI-15,none,55,OLED,China,1500
+Television,AU178,none,60,AMOLED,Japan,4000
+Television,RTI-14,none,25,Super AMOLED,Korea,2000
+Television,XT13,none,20,TFT,Moldova,500
+Television,ARJ178,none,5,TFT,Brazil,100
+Telephone,X,IPhone,,OLED,none,300
+Telephone,A12,SAMSUNG,,Super AMOLED,none,300
+Telephone,P10 Pro,Huawei,,OLED,none,150
+Telephone,M6,Meizu,,TFT,none,50
