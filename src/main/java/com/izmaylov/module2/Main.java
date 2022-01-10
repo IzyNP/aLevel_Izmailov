@@ -18,6 +18,8 @@ public class Main {
         Customer customer5 = personService.randomCustomer();
         Customer customer6 = personService.randomCustomer();
         Customer customer7 = personService.randomCustomer();
+        Customer customer8 = personService.randomCustomer();
+        Customer customer9 = personService.randomCustomer();
         shopService.createOrder(customer);
         shopService.createOrder(customer1);
         shopService.createOrder(customer2);
@@ -26,6 +28,8 @@ public class Main {
         shopService.createOrder(customer5);
         shopService.createOrder(customer6);
         shopService.createOrder(customer7);
+        shopService.createOrder(customer9);
+        shopService.createOrder(customer8);
         shopService.smt();
 
     }
