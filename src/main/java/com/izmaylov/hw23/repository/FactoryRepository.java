@@ -40,26 +40,15 @@ public class FactoryRepository extends AbstractRepository {
     }
 
     public String getAllDevicesAndSumForFactory() {
-        String sqlCount = "SELECT factory.id, COUNT(device.id) FROM factory JOIN device ON device.factoryId = factory.id GROUP BY factory.id";
-        String sqlSum = "SELECT factory.id, SUM(device.price) FROM factory JOIN device ON device.factoryId = factory.id GROUP BY factory.id";
+        String sql = "SELECT factory.id, COUNT(device.id),SUM(device.price) FROM factory JOIN device ON device.factoryId = factory.id GROUP BY factory.id";
         String[] result = new String[4];
         int iter = 0;
         try (Connection connection = createConnection();
              Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sqlCount);
+            ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                result[iter++] = ("Factory " + resultSet.getLong(1) +" made " + resultSet.getInt(2) +" devices");
+                result[iter++] = ("Factory " + resultSet.getLong(1) +" made " + resultSet.getInt(2) +" devices in the amount of " + resultSet.getInt(3));
 
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        iter = 0;
-        try (Connection connection = createConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sqlSum);
-            while (resultSet.next()) {
-                result[iter++] += (" in the amount of " + resultSet.getInt(2));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
