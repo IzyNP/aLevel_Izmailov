@@ -64,7 +64,6 @@ public class DatabaseRepository {
 
     public void updateDevice(Device device) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            device.setAvailable(false);
             transaction = session.beginTransaction();
             session.update(device);
             transaction.commit();

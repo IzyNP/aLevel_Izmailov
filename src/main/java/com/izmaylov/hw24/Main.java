@@ -24,6 +24,8 @@ public class Main {
 
 
         System.out.println(factory);
+        updatedDevice.setAvailable(false);
+        updatedDevice.setDescription("updated description");
         databaseRepository.updateDevice(updatedDevice);
         databaseRepository.deleteDevice(deletedDevice);
         System.out.println(databaseRepository.getAllDevicesFromFactory(3));
