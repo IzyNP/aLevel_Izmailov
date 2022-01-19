@@ -14,8 +14,8 @@ public class FactoryRepository extends AbstractRepository {
             statement.setString(1, name);
             statement.setString(2, country);
             statement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -33,8 +33,8 @@ public class FactoryRepository extends AbstractRepository {
                     return factory;
                 }
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return null;
     }
@@ -50,8 +50,8 @@ public class FactoryRepository extends AbstractRepository {
                 result[iter++] = ("Factory " + resultSet.getLong(1) +" made " + resultSet.getInt(2) +" devices in the amount of " + resultSet.getInt(3));
 
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return Arrays.toString(result);
     }

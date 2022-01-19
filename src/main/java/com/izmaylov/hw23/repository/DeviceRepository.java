@@ -1,6 +1,7 @@
 package com.izmaylov.hw23.repository;
 
 import com.izmaylov.hw23.entity.Device;
+import com.izmaylov.hw23.entity.FactoryDevice;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,8 +21,8 @@ public class DeviceRepository extends AbstractRepository {
             statement.setBoolean(6, available);
             statement.setLong(7, factoryId);
             statement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -44,20 +45,26 @@ public class DeviceRepository extends AbstractRepository {
                     return device;
                 }
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return null;
     }
 
     public void updateDevice(Device device) {
-        String sql = "UPDATE device SET available = 'false' WHERE id = ?";
+        String sql = "UPDATE device SET type = ?, model = ?, price = ?, date_of_creation = ?, description = ?, available = ? WHERE id = ?";
         try (Connection connection = createConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, device.getId());
+            statement.setLong(7, device.getId());
+            statement.setString(1, device.getType());
+            statement.setString(2, device.getModel());
+            statement.setInt(3, device.getPrice());
+            statement.setDate(4, device.getDateOfCreation());
+            statement.setString(5, device.getDescription());
+            statement.setBoolean(6, device.isAvailable());
             statement.execute();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -67,20 +74,20 @@ public class DeviceRepository extends AbstractRepository {
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, id);
             statement.execute();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
     }
 
-    public List<Device> getAllDevicesFromFactory(long id) {
-        String sql = "SELECT * FROM device JOIN factory ON device.factoryID = factory.id WHERE factoryID = ?";
-        List<Device> deviceList = new ArrayList<>();
+    public List<FactoryDevice> getAllDevicesFromFactory(long id) {
+        String sql = "SELECT * FROM device  INNER JOIN  factory ON device.factoryID = factory.id WHERE factoryID = ?";
+        List<FactoryDevice> deviceList = new ArrayList<>();
         try (Connection connection = createConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Device device = new Device();
+                FactoryDevice device = new FactoryDevice();
                 device.setId(resultSet.getLong(1));
                 device.setType(resultSet.getString(2));
                 device.setModel(resultSet.getString(3));
@@ -89,11 +96,13 @@ public class DeviceRepository extends AbstractRepository {
                 device.setDescription(resultSet.getString(6));
                 device.setAvailable(resultSet.getBoolean(7));
                 device.setFactoryId(resultSet.getLong(8));
+                device.setName(resultSet.getString(10));
+                device.setCountry(resultSet.getString(11));
                 deviceList.add(device);
             }
             return deviceList;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return null;
     }
