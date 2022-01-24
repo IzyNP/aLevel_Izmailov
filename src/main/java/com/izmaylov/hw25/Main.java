@@ -23,8 +23,8 @@ public class Main {
 
         databaseRepository.getAllMovieSessions().forEach(System.out::println);
         databaseRepository.getAllUsers().forEach(System.out::println);
-        databaseRepository.getMovieByContains("2").forEach(System.out::println);
-        databaseRepository.getAllTicketByUser(3).forEach(System.out::println);
+        databaseRepository.getMovieByContainsString("2").forEach(System.out::println);
+        databaseRepository.getAllTicketByUserId(3).forEach(System.out::println);
 
         Ticket ticket = tickets.get(3);
 

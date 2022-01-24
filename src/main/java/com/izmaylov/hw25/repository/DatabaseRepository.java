@@ -89,7 +89,7 @@ public class DatabaseRepository {
         return users;
     }
 
-    public List<Movie> getMovieByContains(String string){
+    public List<Movie> getMovieByContainsString(String string){
         string = "%" + string + "%";
         List<Movie> movies = new ArrayList<>();
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
@@ -105,7 +105,7 @@ public class DatabaseRepository {
     }
 
 
-    public List<Ticket> getAllTicketByUser(long id){
+    public List<Ticket> getAllTicketByUserId(long id){
         List<Ticket> tickets = new ArrayList<>();
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query query = session.createQuery("from Ticket WHERE user_id =:user_id", Ticket.class);
