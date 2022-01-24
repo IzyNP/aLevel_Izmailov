@@ -98,7 +98,7 @@ public class DatabaseRepository {
 
 
 
-    public void getAllDevicesAndSumForFactory(long id){
+    public void showAllDevicesAndSumForFactory(long id){
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             List query = session.createQuery("select device.factory.id, count (device.id), sum(device.price) from Device as device group by device.factory.id order by device.factory.id").list();

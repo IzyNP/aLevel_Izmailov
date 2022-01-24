@@ -29,6 +29,6 @@ public class Main {
         databaseRepository.updateDevice(updatedDevice);
         databaseRepository.deleteDevice(deletedDevice);
         System.out.println(databaseRepository.getAllDevicesFromFactory(3));
-        databaseRepository.getAllDevicesAndSumForFactory(3);
+        databaseRepository.showAllDevicesAndSumForFactory(3);
     }
 }
