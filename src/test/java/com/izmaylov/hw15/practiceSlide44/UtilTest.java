@@ -1,6 +1,7 @@
 package com.izmaylov.hw15.practiceSlide44;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -24,7 +25,7 @@ class UtilTest {
         expected.put("Nikita",6);
         Map<String,Integer> actual = Util.stringIntegerMap(list);
 
-        Assert.assertEquals(expected,actual);
+        Assertions.assertEquals(expected,actual);
     }
 
 }
