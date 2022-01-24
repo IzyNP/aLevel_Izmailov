@@ -18,5 +18,8 @@
         <mapping class="com.izmaylov.hw25.entity.User"/>
         <mapping class="com.izmaylov.hw25.entity.MovieSession"/>
         <mapping class="com.izmaylov.hw25.entity.Ticket"/>
+        <mapping class="com.izmaylov.hw24.entity.Device"/>
+        <mapping class="com.izmaylov.hw24.entity.Factory"/>
+
     </session-factory>
 </hibernate-configuration>
