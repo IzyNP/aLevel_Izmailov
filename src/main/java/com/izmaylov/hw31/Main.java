@@ -1,7 +1,6 @@
 package com.izmaylov.hw31;
 
 import com.izmaylov.hw31.model.CountThread;
-import com.izmaylov.hw31.model.ReverseThread;
 import com.izmaylov.hw31.utils.Creator;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class Main {
         List<Integer> integerList = Creator.createListOfPrimeNumbers(100);
 
         for (int i = (list.size() -1); i > 0; i--) {
-            ReverseThread.runner(list.get(i));
+            list.get(i).start();
         }
 
         CountThread countThread = new CountThread(integerList.stream()
@@ -24,11 +23,11 @@ public class Main {
                 .collect(Collectors.toList()));
 
 
-        countThread.runner();
-        countThread1.runner();
+        countThread.start();
+        countThread1.start();
 
 
-        System.out.println("Two threads counted " + (countThread.getIntegerList().size() + countThread1.getIntegerList().size()) + " numbers");
+       System.out.println("Two threads counted " + (countThread.getIntegerList().size() + countThread1.getIntegerList().size()) + " numbers");
     }
 }
 

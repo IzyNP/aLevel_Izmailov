@@ -6,8 +6,5 @@ public class ReverseThread extends Thread {
         System.out.println("Hello from thread " + Thread.currentThread().getName());
     }
 
-    public static void runner(Thread thread) throws InterruptedException {
-        thread.start();
-        thread.join();
-    }
+
 }
