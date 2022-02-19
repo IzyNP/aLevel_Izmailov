@@ -4,7 +4,7 @@ import com.izmaylov.hw25.entity.Movie;
 import com.izmaylov.hw25.entity.MovieSession;
 import com.izmaylov.hw25.entity.Ticket;
 import com.izmaylov.hw25.entity.User;
-import com.izmaylov.hw25.util.HibernateUtil;
+import com.izmaylov.hw24.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

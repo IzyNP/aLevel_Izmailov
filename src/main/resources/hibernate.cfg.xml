@@ -11,15 +11,16 @@
         <property name="connection.password">root</property>
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect </property>
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
-        <mapping class="com.izmaylov.hw25.entity.Movie"/>
-        <mapping class="com.izmaylov.hw25.entity.User"/>
-        <mapping class="com.izmaylov.hw25.entity.MovieSession"/>
-        <mapping class="com.izmaylov.hw25.entity.Ticket"/>
-        <mapping class="com.izmaylov.hw24.entity.Device"/>
-        <mapping class="com.izmaylov.hw24.entity.Factory"/>
+        <mapping class="com.izmaylov.module3.entity.Subscriber"/>
+        <mapping class="com.izmaylov.module3.entity.Message"/>
+        <mapping class="com.izmaylov.module3.model.Device"/>
+        <mapping class="com.izmaylov.module3.entity.tariffEntity.OnlyCallTariff"/>
+        <mapping class="com.izmaylov.module3.entity.tariffEntity.EverythingTariff"/>
+        <mapping class="com.izmaylov.module3.entity.tariffEntity.CommunicationTariff"/>
+        <mapping class="com.izmaylov.module3.model.Tariff"/>
 
     </session-factory>
 </hibernate-configuration>
