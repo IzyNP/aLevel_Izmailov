@@ -1,6 +1,6 @@
 package com.izmaylov.module3;
 
-import com.izmaylov.module3.services.AdminService;
+import com.izmaylov.module3.services.ConsoleService;
 import org.flywaydb.core.Flyway;
 
 public class Main {
@@ -9,27 +9,21 @@ public class Main {
         String username = "postgres";
         String password = "root";
 
-        try{
+        try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        Flyway flyway = Flyway.configure().dataSource(url,username,password).load();
+        Flyway flyway = Flyway.configure().dataSource(url, username, password).load();
 
         flyway.clean();
         flyway.migrate();
 
 
+        ConsoleService consoleService = new ConsoleService();
+        consoleService.doSomething();
 
-        AdminService adminService = new AdminService();
-        System.out.println(adminService.getMessageByConcreteWord("Praesent"));
-        System.out.println(adminService.getSubscriberWhoDidMostCalls());
-        System.out.println(adminService.getSubscriberWithMostSentMessages());
-        System.out.println(adminService.getSubscriberWhoMostFrequentlySurfInternet());
-        System.out.println("Most popular device is " + adminService.whichDeviceIsMostPopular());
-        System.out.println("Top 5 subscribers: " + adminService.getTopFiveSubscribersByActivity());
-        adminService.whichServiceMostPopular();
 
     }
 }
